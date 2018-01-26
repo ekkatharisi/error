@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings>
+	<entity class="org.sid.dao.entity.Formation">
+		<table name="formations">
+			<attributes>
+				<id name="id">
+					<genrated-value strategy="AUTO"></genrated-value>
+				</id>
+				<basic name="nom"></basic>
+				<basic name="duree"></basic>
+				<one-to-many mappedby="formation" fetch="lazy">
+					<basic name="etudiants"></basic>
+				</one-to-many>
+			</attributes>
+		</table>
+	</entity>
+	<entity class="org.sid.dao.entity.Etudiant">
+		<table name="etudiants">
+			<attributes>
+				<id name="id">
+					<genrated-value strategy="AUTO"></genrated-value>
+				</id>
+				<basic name="nom"></basic>
+				<basic name="prenom"></basic>
+				<many-to-one>
+					<Join-column name="id_formation">
+						<basic name="formation"></basic>
+					</Join-column>
+				</many-to-one>
+			</attributes>
+		</table>
+	</entity>
+
+</entity-mappings>
